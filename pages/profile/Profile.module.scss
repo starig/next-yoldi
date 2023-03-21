@@ -1,0 +1,108 @@
+.profile {
+  display: grid;
+
+  .cover {
+    height: 200px;
+
+    background: #F3F3F3;
+    /* strokes-secondady */
+
+    border-bottom: 1px solid #E6E6E6;
+  }
+
+  .container {
+    display: grid;
+    gap: 60px;
+    padding: 0 240px;
+
+    .userInfo {
+      display: grid;
+      gap: 35px;
+
+      .userAvatar {
+        margin-top: -50px;
+      }
+
+      .userName {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        .userNameInfo {
+          display: grid;
+          gap: 10px;
+          .name {
+            font-weight: 500;
+            font-size: 30px;
+          }
+
+          .email {
+            font-weight: 400;
+            font-size: 16px;
+            /* gray */
+            color: #838383;
+          }
+        }
+
+        .userNameEdit {
+          width: 200px;
+          height: 40px;
+        }
+      }
+
+      .userDescription {
+        width: 600px;
+        line-height: 160%;
+      }
+    }
+
+    .logOut {
+      width: 130px;
+      height: 40px;
+    }
+  }
+
+  .button {
+    /* background-primary */
+    background: #FFFFFF;
+    color: black;
+  }
+}
+
+@media (max-width: 1024px) {
+  .profile {
+
+    .container {
+      padding: 0 120px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .profile {
+    .container {
+      .userInfo {
+        .userDescription {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 590px) {
+  .profile {
+    .container {
+      padding: 0 30px;
+
+      .userInfo {
+        .userName {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .userDescription {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

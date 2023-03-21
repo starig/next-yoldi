@@ -1,0 +1,48 @@
+.header {
+  /* background-primary */
+
+  background: #FFFFFF;
+  /* strokes-secondady */
+
+  border-bottom: 1px solid #E6E6E6;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 15px 20px;
+  align-items: center;
+
+  .leftSide {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    .logoTitle {
+      width: 225px;
+      line-height: 25.6px;
+    }
+  }
+
+  .rightSide {
+    justify-self: end;
+
+    .userInfo {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .button {
+      width: 114px;
+      height: 40px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    .leftSide {
+      .logoTitle {
+        display: none;
+      }
+    }
+  }
+}
