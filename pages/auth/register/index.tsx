@@ -61,6 +61,7 @@ const Register: FC = () => {
                                 </div>
                             </>
                             <button type="submit" className={styles.button}
+                                    //@ts-ignore
                                     disabled={isSubmitting || errors.email || errors.password || !values.email || !values.password}>
                                 Создать аккаунт
                             </button>

@@ -10,10 +10,12 @@ const Header: FC = () => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.leftSide}>
-                <Image src={LogoSvg} alt={'Yoldi'}/>
-                <h2 className={styles.logoTitle}>Разрабатываем и запускаем сложные веб проекты</h2>
-            </div>
+            <Link href={'/'}>
+                <div className={styles.leftSide}>
+                    <Image src={LogoSvg} alt={'Yoldi'}/>
+                    <h2 className={styles.logoTitle}>Разрабатываем и запускаем сложные веб проекты</h2>
+                </div>
+            </Link>
             <div className={styles.rightSide}>
                 {
                     auth ? <Link href={'/profile'}><div className={styles.userInfo}>
