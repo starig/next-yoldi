@@ -1,3 +1,85 @@
+@import "./styles/colors";
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.mobileEdit {
+  padding: 30px;
+}
+.modalTitle {
+  font-family: 'Inter', sans-serif;;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 140%;
+  margin-bottom: 25px;
+}
+
+.formForm {
+  display: grid;
+  font-family: 'Inter', sans-serif;
+  gap: 15px;
+  .inputLabel {
+    font-weight: 500;
+    color: $gray;
+  }
+
+  .slugLabel {
+    background-color: $background-secondary;
+    width: 146px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $gray;
+    border-right: 1px solid $gray;
+  }
+
+  .slugInput {
+    padding-left: 150px;
+  }
+
+  .descriptionInput {
+    height: 154px;
+    resize: none;
+  }
+
+  .button {
+    height: 50px;
+    background-color: $text-color;
+    color: $background-primary;
+
+    &:disabled {
+      background-color: $strokes-primary;
+    }
+  }
+
+  .showHidePassword {
+    cursor: pointer;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+
+  .button {
+    height: 50px;
+  }
+
+  .cancelButton {
+    background-color: $background-primary;
+    border: 1px solid $gray;
+    color: $text-color;
+  }
+
+  .saveButton {
+    background-color: $text-color;
+    color: $background-primary;
+  }
+}
+
 .profile {
   display: grid;
 
@@ -66,6 +148,8 @@
     color: black;
   }
 }
+
+
 
 @media (max-width: 1024px) {
   .profile {

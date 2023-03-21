@@ -18,8 +18,12 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-loader-spinner": "^5.3.4",
+    "react-modal": "^3.16.1",
     "sass": "^1.59.3",
     "swr": "^2.1.0",
     "typescript": "5.0.2"
+  },
+  "devDependencies": {
+    "@types/react-modal": "^3.13.1"
   }
 }
