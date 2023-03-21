@@ -13,11 +13,46 @@
     .usersList {
       display: grid;
 
+      &:last-child {
+        border-bottom: 1px solid #E6E6E6;
+      }
+
       .usersItem {
         display: grid;
         grid-template-columns: 50px 1fr;
         align-items: center;
+        gap: 20px;
+        padding: 10px 0;
+        border-top: 1px solid #E6E6E6;
+
+        .info {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+
+          .name {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 160%;
+          }
+
+          .email {
+            color: #838383;
+          }
+        }
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 50px 120px;
+  }
+}
+
+@media (max-width: 425px) {
+  .home {
+    padding: 50px 20px;
   }
 }

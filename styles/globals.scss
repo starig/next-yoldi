@@ -51,3 +51,11 @@ input {
     border: 1px solid #838383;
     border-radius: 5px;
 }
+
+.loader {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
