@@ -7,3 +7,12 @@ export interface UserInfo {
     cover?: any;
     password?: string;
 }
+
+export enum CurrentPage {
+    LOGIN= 'login',
+    REGISTER = 'register',
+}
+
+export interface AuthResponse {
+    value: string
+}

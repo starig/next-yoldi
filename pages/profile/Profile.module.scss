@@ -40,10 +40,18 @@
     padding-left: 150px;
   }
 
-  .descriptionInput {
-    height: 154px;
-    resize: none;
+  .descriptionInputWrapper {
+    display: grid;
+    height: 156px;
+    padding: 12px 20px;
+    .descriptionInput {
+      justify-self: start;
+      align-self: start;
+      height: 100%;
+      resize: none;
+    }
   }
+
 
   .button {
     height: 50px;

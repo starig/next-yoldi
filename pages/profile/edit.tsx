@@ -1,24 +1,29 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import styles from './Profile.module.scss';
 import {Formik} from "formik";
 import {UserInfo} from "@/types/types";
 import {useRouter} from "next/router";
 import useSWR from "swr";
 import {apiURL} from "@/api/constants";
-import {patchFetcher} from "@/api/requests";
+import {getFetcher, patchFetcher} from "@/api/requests";
+import {useLocalStorage, useReadLocalStorage} from "usehooks-ts";
 
-const Edit = () => {
-    const userInfo = {
-        name: 'jordan',
-        slug: 'slug',
-        description: 'descr'
-    }
-    const token = '';
-    const { name, slug, description } = userInfo;
+const Edit: FC<UserInfo> = () => {
     const [newUserInfo, setNewUserInfo] = useState<UserInfo>();
+    const token = useReadLocalStorage('authToken');
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [shouldFetch, setShouldFetch] = useState<boolean>(false);
     const router = useRouter();
+    const userData = useSWR(`${apiURL}/profile`, (url) =>
+        getFetcher(url, {
+            headers: {
+                "X-API-KEY": token,
+            },
+        })
+    ).data;
+
+    const {name, slug, description} = userData;
+
     const { data, isLoading, error } = useSWR(
         shouldFetch ? `${apiURL}/profile` : null,
         (url) => {
@@ -33,10 +38,11 @@ const Edit = () => {
                 },
                 token,
             }).then(() => {
-                setIsOpen(false);
+                router.push('/profile');
             });
         }
     );
+
 
     return <div className={styles.mobileEdit}>
         <h4 className={styles.modalTitle}>Редактировать профиль</h4>
@@ -114,7 +120,7 @@ const Edit = () => {
                             {errors.description}
                 </span>
                     )}
-                    <div className={"input"}>
+                    <div className={`input ${styles.descriptionInputWrapper}`}>
                 <textarea
                     className={`inputField ${styles.descriptionInput}`}
                     name={"description"}

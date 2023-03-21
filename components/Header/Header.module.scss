@@ -1,10 +1,10 @@
+@import "../../styles/colors";
+
+
 .header {
-  /* background-primary */
+  background: $background-primary;
 
-  background: #FFFFFF;
-  /* strokes-secondady */
-
-  border-bottom: 1px solid #E6E6E6;
+  border-bottom: 1px solid $strokes-secondary;
   display: grid;
   grid-template-columns: 2fr 1fr;
   padding: 15px 20px;
@@ -33,6 +33,11 @@
     .button {
       width: 114px;
       height: 40px;
+
+      .loginBtn {
+        background-color: $background-primary;
+        color: $text-color;
+      }
     }
   }
 }

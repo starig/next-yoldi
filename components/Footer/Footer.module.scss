@@ -1,0 +1,14 @@
+@import "./styles/colors";
+
+.wrapper {
+  display: flex;
+  background-color: $background-primary;
+  min-height: 72px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  bottom: 0;
+  border-top: 1px solid $strokes-primary;
+  position: fixed;
+}
