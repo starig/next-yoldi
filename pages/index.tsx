@@ -9,7 +9,6 @@ import Link from "next/link";
 import {useReadLocalStorage} from "usehooks-ts";
 import {useEffect} from "react";
 import {useRouter} from "next/router";
-import {log} from "util";
 
 
 export default function Home() {
@@ -24,7 +23,7 @@ export default function Home() {
         if (!tokenValue) {
             router.push('/auth/login')
         }
-    }, [])
+    }, []);
 
     if (isLoading)
         return (
@@ -43,13 +42,14 @@ export default function Home() {
         );
 
     if (data) {
+        console.log(data)
         return (
             <div className={styles.home}>
                 <div className={styles.container}>
                     <h3 className={styles.title}>Список аккаунтов</h3>
                     <ul className={styles.usersList}>
                         {
-                            data.slice(data.length - 7, data.length).map((user) => {
+                            data.slice(0, 7).map((user) => {
                                 return <Link href={`/profile/${user.slug}`} key={user.slug}>
                                     <li className={styles.usersItem}>
                                         <EmptyAvatar name={user.name}/>
