@@ -47,12 +47,17 @@ const Header: FC = () => {
     const {name} = data ? data : '';
     return (
         <header className={styles.header}>
-            <Link href={'/'}>
-                <div className={styles.leftSide}>
+            {
+                token ? <Link href={'/'}>
+                    <div className={styles.leftSide}>
+                        <Image src={LogoSvg} alt={'Yoldi'}/>
+                        <h2 className={styles.logoTitle}>Разрабатываем и запускаем сложные веб проекты</h2>
+                    </div>
+                </Link> : <div className={styles.leftSide}>
                     <Image src={LogoSvg} alt={'Yoldi'}/>
                     <h2 className={styles.logoTitle}>Разрабатываем и запускаем сложные веб проекты</h2>
                 </div>
-            </Link>
+            }
             <div className={styles.rightSide}>
                 {
                     auth ? <Link href={'/profile'}>
