@@ -5,8 +5,8 @@ import LogoSvg from '@/assets/svg/logo-wrapper.svg';
 import EmptyAvatar from "@/components/EmptyAvatar/EmptyAvatar";
 import Link from "next/link";
 import useSWR from "swr";
-import {apiURL} from "@/api/constants";
-import {getFetcher} from "@/api/requests";
+import {apiURL} from "@/pages/api/constants";
+import {getFetcher} from "@/pages/api/requests";
 import {useLocalStorage, useReadLocalStorage} from "usehooks-ts";
 import {useRouter} from "next/router";
 

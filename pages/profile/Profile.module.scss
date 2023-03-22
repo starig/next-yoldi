@@ -94,10 +94,9 @@
   .cover {
     height: 200px;
 
-    background: #F3F3F3;
-    /* strokes-secondady */
+    background: $background-secondary;
 
-    border-bottom: 1px solid #E6E6E6;
+    border-bottom: 1px solid $strokes-secondary;
   }
 
   .container {
@@ -127,8 +126,7 @@
           .email {
             font-weight: 400;
             font-size: 16px;
-            /* gray */
-            color: #838383;
+            color: $gray;
           }
         }
 
@@ -151,9 +149,8 @@
   }
 
   .button {
-    /* background-primary */
-    background: #FFFFFF;
-    color: black;
+    background: $background-primary;
+    color: $text-color;
   }
 }
 

@@ -3,8 +3,8 @@ import styles from './Profile.module.scss';
 import EmptyAvatar from "@/components/EmptyAvatar/EmptyAvatar";
 import {useRouter} from "next/router";
 import useSWR from "swr";
-import {apiURL} from "@/api/constants";
-import {getFetcher} from "@/api/requests";
+import {apiURL} from "@/pages/api/constants";
+import {getFetcher} from "@/pages/api/requests";
 import {Oval} from "react-loader-spinner";
 import {UserInfo} from "@/types/types";
 

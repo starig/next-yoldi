@@ -4,9 +4,9 @@ import {Formik} from "formik";
 import {UserInfo} from "@/types/types";
 import {useRouter} from "next/router";
 import useSWR from "swr";
-import {apiURL} from "@/api/constants";
-import {getFetcher, patchFetcher} from "@/api/requests";
-import {useLocalStorage, useReadLocalStorage} from "usehooks-ts";
+import {apiURL} from "@/pages/api/constants";
+import {getFetcher, patchFetcher} from "@/pages/api/requests";
+import {useReadLocalStorage} from "usehooks-ts";
 import {Oval} from "react-loader-spinner";
 
 const Edit: FC<UserInfo> = () => {

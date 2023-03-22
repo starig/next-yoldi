@@ -9,8 +9,8 @@ import Footer from "@/components/Footer/Footer";
 import {AuthResponse, CurrentPage, UserInfo} from "@/types/types";
 import {useRouter} from "next/router";
 import useSWR from "swr";
-import {apiURL} from "@/api/constants";
-import {patchFetcher, postFetcher} from "@/api/requests";
+import {apiURL} from "@/pages/api/constants";
+import {patchFetcher, postFetcher} from "@/pages/api/requests";
 import {useLocalStorage, useReadLocalStorage} from "usehooks-ts";
 
 const Login: FC = () => {

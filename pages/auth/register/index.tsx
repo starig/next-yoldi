@@ -9,8 +9,8 @@ import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import {AuthResponse, CurrentPage, UserInfo} from "@/types/types";
 import useSWR from "swr";
-import {apiURL} from "@/api/constants";
-import {postFetcher} from "@/api/requests";
+import {apiURL} from "@/pages/api/constants";
+import {postFetcher} from "@/pages/api/requests";
 import {useRouter} from "next/router";
 import {useLocalStorage, useReadLocalStorage} from "usehooks-ts";
 
