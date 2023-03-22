@@ -22,7 +22,7 @@ const Register: FC = () => {
     const [token, setToken] = useLocalStorage<string | null>('authToken', null);
     const currentToken = useReadLocalStorage('authToken');
 
-    const {data, isLoading, error} = useSWR<AuthResponse>(
+    const {data, error} = useSWR<AuthResponse>(
         shouldFetch ? `${apiURL}/auth/sign-up` : null,
         (url) =>
             postFetcher(url, {
@@ -37,7 +37,7 @@ const Register: FC = () => {
             setToken(data.value);
             router.push('/');
         }
-    }, [data])
+    }, [data]);
 
     useEffect(() => {
         if (currentToken) {
@@ -116,7 +116,7 @@ const Register: FC = () => {
                     </Formik>
                 </div>
             </div>
-            <Footer currentPage={CurrentPage.REGISTER} />
+            <Footer currentPage={CurrentPage.REGISTER}/>
         </>
 
     );

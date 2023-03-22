@@ -9,10 +9,20 @@ export interface UserInfo {
 }
 
 export enum CurrentPage {
-    LOGIN= 'login',
+    LOGIN = 'login',
     REGISTER = 'register',
 }
 
 export interface AuthResponse {
     value: string
+}
+
+export interface Footer {
+    currentPage: CurrentPage;
+}
+
+export interface EmptyAvatar {
+    name?: string;
+    width?: number;
+    height?: number;
 }

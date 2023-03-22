@@ -9,7 +9,7 @@ import {Formik} from "formik";
 import {UserInfo} from "@/types/types";
 import {getFetcher, patchFetcher} from "@/pages/api/requests";
 import {apiURL} from "@/pages/api/constants";
-import useSWR from "swr";
+import useSWR, {SWRResponse} from "swr";
 import {useRouter} from "next/router";
 import {useLocalStorage, useReadLocalStorage} from "usehooks-ts";
 import {Oval} from "react-loader-spinner";
@@ -44,7 +44,7 @@ const Profile: FC = () => {
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const router = useRouter();
 
-    const userData: any = useSWR(`${apiURL}/profile`,
+    const userData: SWRResponse = useSWR(`${apiURL}/profile`,
         (url) =>
             getFetcher(url, {
                 headers: {
@@ -62,7 +62,7 @@ const Profile: FC = () => {
         }
     }, [userData])
 
-    const {data, isLoading, error} = useSWR(
+    const {isLoading, error} = useSWR(
         shouldFetch ? `${apiURL}/profile` : null,
         async (url) => {
             const newName = newUserInfo?.name;

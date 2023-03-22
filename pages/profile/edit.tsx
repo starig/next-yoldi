@@ -22,7 +22,7 @@ const Edit: FC<UserInfo> = () => {
         })
     );
 
-    const { data, isLoading, error } = useSWR(
+    const {isLoading, error} = useSWR(
         shouldFetch ? `${apiURL}/profile` : null,
         (url) => {
             const newName = newUserInfo?.name;

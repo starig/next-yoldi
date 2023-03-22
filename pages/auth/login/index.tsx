@@ -10,7 +10,7 @@ import {AuthResponse, CurrentPage, UserInfo} from "@/types/types";
 import {useRouter} from "next/router";
 import useSWR from "swr";
 import {apiURL} from "@/pages/api/constants";
-import {patchFetcher, postFetcher} from "@/pages/api/requests";
+import {postFetcher} from "@/pages/api/requests";
 import {useLocalStorage, useReadLocalStorage} from "usehooks-ts";
 
 const Login: FC = () => {
@@ -21,7 +21,7 @@ const Login: FC = () => {
     const [token, setToken] = useLocalStorage<string | undefined>('authToken', undefined);
     const currentToken = useReadLocalStorage('authToken');
 
-    const {data, isLoading, error} = useSWR<AuthResponse>(
+    const {data, error} = useSWR<AuthResponse>(
         shouldFetch ? `${apiURL}/auth/login` : null,
         (url) =>
             postFetcher(url, {
