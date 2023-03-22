@@ -44,14 +44,16 @@ const Profile: FC = () => {
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const router = useRouter();
 
-    const userData = useSWR(`${apiURL}/profile`, async (url) => {
-            await getFetcher(url, {
+    const userData = useSWR(`${apiURL}/profile`,
+        (url) => {
+            getFetcher(url, {
                 headers: {
                     "X-API-KEY": token,
                 },
             });
         }
     );
+
 
 
     const {data, isLoading, error} = useSWR(
@@ -72,6 +74,9 @@ const Profile: FC = () => {
     );
 
     useEffect(() => {
+        if (!tokenValue) {
+            router.push('/auth/login')
+        }
         setShouldFetch(false);
         if (window.innerWidth <= 640) {
             setIsMobile(true);
@@ -82,20 +87,19 @@ const Profile: FC = () => {
         setIsOpen(true);
     }
 
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        // subtitle.style.color = '#f00';
-    }
-
     function closeModal() {
         setIsOpen(false);
     }
+
+    useEffect(() => {
+        setShouldFetch(false);
+    }, [modalIsOpen])
 
     const logOut = () => {
         setToken(undefined);
         router.push('/');
     }
-    if (userData.isLoading || isLoading)
+    if (userData.isLoading || isLoading || !userData.data)
         return (
             <div className={`loader`}><Oval
                 height={80}
@@ -117,7 +121,6 @@ const Profile: FC = () => {
                 <div id={"modal"}>
                     <Modal
                         isOpen={modalIsOpen}
-                        onAfterOpen={afterOpenModal}
                         onRequestClose={() => {
                             closeModal();
                         }}

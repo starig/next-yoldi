@@ -56,7 +56,7 @@ const SlugProfile: FC = () => {
             </div>
         );
     } else if (error) {
-        return <div className={styles.profile}>{error}</div>
+        return <div className={styles.errorContainer}>Ошибка: {error}</div>
     } else {
         return <></>
     }

@@ -50,6 +50,7 @@ const Register: FC = () => {
             <div className={styles.wrapper}>
                 <div className={styles.formBox} style={{maxHeight: 424}}>
                     <h3 className={styles.title}>Регистрация в Yoldi Agency</h3>
+                    {error && <span className={styles.formError}>{error}</span>}
                     <Formik
                         initialValues={{name: '', email: '', password: ''}}
                         validate={(values: FormikValues) => {

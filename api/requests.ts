@@ -1,8 +1,12 @@
 import axios from "axios";
 
 export const getFetcher = async (url: string, config: any) => {
-    const response = await axios.get(url, config);
-    return response.data;
+    try {
+        const response = await axios.get(url, config);
+        return response.data;
+    } catch (e: any) {
+        throw e.response.data.message;
+    }
 };
 
 export const postFetcher = async (url: string, data: any) => {

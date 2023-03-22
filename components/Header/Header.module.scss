@@ -25,9 +25,10 @@
     justify-self: end;
 
     .userInfo {
-      display: flex;
+      display: grid;
       gap: 20px;
       align-items: center;
+      grid-template-columns: 1fr 50px;
     }
 
     .button {
