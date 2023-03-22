@@ -12,7 +12,6 @@ import {Oval} from "react-loader-spinner";
 const Edit: FC<UserInfo> = () => {
     const [newUserInfo, setNewUserInfo] = useState<UserInfo>();
     const token = useReadLocalStorage('authToken');
-    const [modalIsOpen, setIsOpen] = React.useState(false);
     const [shouldFetch, setShouldFetch] = useState<boolean>(false);
     const router = useRouter();
     const userData = useSWR(`${apiURL}/profile`, (url) =>
@@ -23,7 +22,6 @@ const Edit: FC<UserInfo> = () => {
         })
     ).data;
 
-    const {name, slug, description} = userData;
 
     const { data, isLoading, error } = useSWR(
         shouldFetch ? `${apiURL}/profile` : null,
@@ -60,6 +58,7 @@ const Edit: FC<UserInfo> = () => {
             /></div>
         );
     if (userData.data) {
+        const {name, slug, description} = userData;
         return <div className={styles.mobileEdit}>
             <h4 className={styles.modalTitle}>Редактировать профиль</h4>
             <Formik
