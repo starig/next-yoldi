@@ -42,7 +42,6 @@ export default function Home() {
         );
 
     if (data) {
-        console.log(data)
         return (
             <div className={styles.home}>
                 <div className={styles.container}>
