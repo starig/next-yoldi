@@ -18,7 +18,7 @@ const Login: FC = () => {
     const router = useRouter();
     const [shouldFetch, setShouldFetch] = useState<boolean>(false);
     const [userInfo, setUserInfo] = useState<UserInfo>();
-    const [token, setToken] = useLocalStorage<string | null>('authToken', null);
+    const [token, setToken] = useLocalStorage<string | undefined>('authToken', undefined);
     const currentToken = useReadLocalStorage('authToken');
 
     const {data, isLoading, error} = useSWR<AuthResponse>(
@@ -29,8 +29,6 @@ const Login: FC = () => {
                 password: userInfo?.password,
             })
     );
-
-    console.log(data, error)
 
     useEffect(() => {
         if (data != undefined) {

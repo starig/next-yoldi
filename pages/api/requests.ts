@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const getFetcher = async (url: string, config: any) => {
-    console.log('gettin')
     try {
         const response = await axios.get(url, config);
         return response.data;

@@ -9,6 +9,7 @@ import Link from "next/link";
 import {useReadLocalStorage} from "usehooks-ts";
 import {useEffect} from "react";
 import {useRouter} from "next/router";
+import {log} from "util";
 
 
 export default function Home() {

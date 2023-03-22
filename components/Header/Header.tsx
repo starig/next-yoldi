@@ -24,8 +24,13 @@ const Header: FC = () => {
         })
     );
 
+    useEffect(() => {
+        mutate();
+    }, [])
+
     const logOut = () => {
         setTokenValue(undefined);
+        localStorage.removeItem('authKey');
         router.push('/auth/login');
     }
 

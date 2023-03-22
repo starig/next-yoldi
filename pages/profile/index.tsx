@@ -101,6 +101,7 @@ const Profile: FC = () => {
 
     const logOut = () => {
         setToken(undefined);
+        localStorage.removeItem('authKey');
         router.push('/auth/login');
     }
 
