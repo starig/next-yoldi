@@ -22,7 +22,6 @@ const Edit: FC<UserInfo> = () => {
         })
     );
 
-
     const { data, isLoading, error } = useSWR(
         shouldFetch ? `${apiURL}/profile` : null,
         (url) => {
@@ -37,12 +36,13 @@ const Edit: FC<UserInfo> = () => {
                 },
                 token,
             }).then(() => {
+                setShouldFetch(false);
                 router.push('/profile');
             });
         }
     );
 
-    if (userData.isLoading || isLoading || !userData.data)
+    if (isLoading || !userData.data)
         return (
             <div className={`loader`}><Oval
                 height={80}
@@ -77,9 +77,13 @@ const Edit: FC<UserInfo> = () => {
                     }
                     return errors;
                 }}
-                onSubmit={(values) => {
+                onSubmit={(values, {setSubmitting}) => {
                     setNewUserInfo(values);
                     setShouldFetch(true);
+                    setTimeout(() => {
+                        userData.mutate();
+                        setSubmitting(false);
+                    }, 800)
                 }}
             >
                 {({

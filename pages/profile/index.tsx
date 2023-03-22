@@ -55,6 +55,7 @@ const Profile: FC = () => {
             })
     );
 
+
     useEffect(() => {
         if (userData.error) {
             logOut();
@@ -74,6 +75,8 @@ const Profile: FC = () => {
                     description: newDescription,
                 },
                 token,
+            }).then(() => {
+                setShouldFetch(false);
             });
         }
     );
@@ -101,7 +104,7 @@ const Profile: FC = () => {
         router.push('/auth/login');
     }
 
-    if (userData.isLoading || isLoading || !userData.data || shouldFetch)
+    if (userData.isLoading || isLoading || !userData.data)
         return (
             <div className={`loader`}><Oval
                 height={80}
@@ -147,10 +150,14 @@ const Profile: FC = () => {
                                 }
                                 return errors;
                             }}
-                            onSubmit={(values) => {
+                            onSubmit={(values, {setSubmitting}) => {
                                 setNewUserInfo(values);
-                                closeModal();
                                 setShouldFetch(true);
+                                setTimeout(() => {
+                                    userData.mutate();
+                                    setSubmitting(false);
+                                    closeModal();
+                                }, 800)
                             }}
                         >
                             {({
