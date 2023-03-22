@@ -30,6 +30,8 @@ const Login: FC = () => {
             })
     );
 
+    console.log(data, error)
+
     useEffect(() => {
         if (data != undefined) {
             setToken(data.value);

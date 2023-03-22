@@ -5,8 +5,8 @@ export const getFetcher = async (url: string, config: any) => {
         const response = await axios.get(url, config);
         return response.data;
     } catch (e: any) {
-        return e.response;
         throw e.response.data.message;
+        return e.response;
     }
 }
 
@@ -16,8 +16,8 @@ export const postFetcher = async (url: string, data: any) => {
         const response = await axios.post(url, data);
         return response.data;
     } catch (e: any) {
-        return e.response;
         throw e.response.data.message;
+        return e.response;
     }
 
 }
@@ -33,6 +33,5 @@ export const patchFetcher = async (url: string, data: any) => {
     } catch (e: any) {
         throw e.response.data.message;
         return e.response;
-
     }
 }

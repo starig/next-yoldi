@@ -50,11 +50,13 @@ const Profile: FC = () => {
                 headers: {
                     "X-API-KEY": token,
                 },
+            }).then(() => {
+                setShouldFetch(false);
             })
     );
 
     useEffect(() => {
-        if (userData.status === 401) {
+        if (userData.error) {
             logOut();
         }
     }, [userData])
@@ -94,16 +96,12 @@ const Profile: FC = () => {
         setIsOpen(false);
     }
 
-    useEffect(() => {
-        setShouldFetch(false);
-    }, [modalIsOpen])
-
     const logOut = () => {
         setToken(undefined);
         router.push('/auth/login');
     }
 
-    if (userData.isLoading || isLoading || !userData.data)
+    if (userData.isLoading || isLoading || !userData.data || shouldFetch)
         return (
             <div className={`loader`}><Oval
                 height={80}

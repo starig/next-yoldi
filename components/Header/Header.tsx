@@ -30,8 +30,7 @@ const Header: FC = () => {
     }
 
     useEffect(() => {
-        console.log(data)
-        if (data?.status === 401) {
+        if (data?.error) {
             logOut();
         }
     }, [data])
