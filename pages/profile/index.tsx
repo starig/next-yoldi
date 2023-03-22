@@ -44,7 +44,7 @@ const Profile: FC = () => {
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const router = useRouter();
 
-    const userData = useSWR(`${apiURL}/profile`,
+    const userData: any = useSWR(`${apiURL}/profile`,
         (url) =>
             getFetcher(url, {
                 headers: {
@@ -54,7 +54,7 @@ const Profile: FC = () => {
     );
 
     useEffect(() => {
-        if (userData.data.status === 401) {
+        if (userData.status === 401) {
             logOut();
         }
     }, [userData])

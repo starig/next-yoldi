@@ -20,7 +20,7 @@ const Edit: FC<UserInfo> = () => {
                 "X-API-KEY": token,
             },
         })
-    ).data;
+    );
 
 
     const { data, isLoading, error } = useSWR(
@@ -58,7 +58,7 @@ const Edit: FC<UserInfo> = () => {
             /></div>
         );
     if (userData.data) {
-        const {name, slug, description} = userData;
+        const {name, slug, description} = userData.data;
         return <div className={styles.mobileEdit}>
             <h4 className={styles.modalTitle}>Редактировать профиль</h4>
             <Formik
