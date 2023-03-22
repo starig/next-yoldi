@@ -45,16 +45,19 @@ const Profile: FC = () => {
     const router = useRouter();
 
     const userData = useSWR(`${apiURL}/profile`,
-        (url) => {
+        (url) =>
             getFetcher(url, {
                 headers: {
                     "X-API-KEY": token,
                 },
-            });
-        }
+            })
     );
 
-
+    useEffect(() => {
+        if (userData.data.status === 401) {
+            logOut();
+        }
+    }, [userData])
 
     const {data, isLoading, error} = useSWR(
         shouldFetch ? `${apiURL}/profile` : null,
@@ -97,8 +100,9 @@ const Profile: FC = () => {
 
     const logOut = () => {
         setToken(undefined);
-        router.push('/');
+        router.push('/auth/login');
     }
+
     if (userData.isLoading || isLoading || !userData.data)
         return (
             <div className={`loader`}><Oval

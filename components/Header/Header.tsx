@@ -7,11 +7,14 @@ import Link from "next/link";
 import useSWR from "swr";
 import {apiURL} from "@/api/constants";
 import {getFetcher} from "@/api/requests";
-import {useReadLocalStorage} from "usehooks-ts";
+import {useLocalStorage, useReadLocalStorage} from "usehooks-ts";
+import {useRouter} from "next/router";
 
 const Header: FC = () => {
+    const router = useRouter();
     const [auth, setAuth] = useState<boolean>(false);
-    const token = useReadLocalStorage<string | null>('authToken');
+    const token = useReadLocalStorage<string | undefined>('authToken');
+    const [tokenValue, setTokenValue] = useLocalStorage('authToken', token);
 
     const {data, isLoading, error, mutate} = useSWR(`${apiURL}/profile`, (url) =>
         getFetcher(url, {
@@ -20,6 +23,18 @@ const Header: FC = () => {
             },
         })
     );
+
+    const logOut = () => {
+        setTokenValue(undefined);
+        router.push('/auth/login');
+    }
+
+    useEffect(() => {
+        console.log(data)
+        if (data?.status === 401) {
+            logOut();
+        }
+    }, [data])
 
 
     useEffect(() => {

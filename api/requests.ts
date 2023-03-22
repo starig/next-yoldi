@@ -5,15 +5,18 @@ export const getFetcher = async (url: string, config: any) => {
         const response = await axios.get(url, config);
         return response.data;
     } catch (e: any) {
+        return e.response;
         throw e.response.data.message;
     }
-};
+}
+
 
 export const postFetcher = async (url: string, data: any) => {
     try {
         const response = await axios.post(url, data);
         return response.data;
     } catch (e: any) {
+        return e.response;
         throw e.response.data.message;
     }
 
@@ -29,8 +32,7 @@ export const patchFetcher = async (url: string, data: any) => {
         return response.data;
     } catch (e: any) {
         throw e.response.data.message;
+        return e.response;
+
     }
-
 }
-
-export const fetcher = (url: string, init?: RequestInit) => fetch(url, init).then(res => res.json());
