@@ -6,6 +6,9 @@ import useSWR from "swr";
 import {UserInfo} from "@/types/types";
 import {Oval} from "react-loader-spinner";
 import Link from "next/link";
+import {useReadLocalStorage} from "usehooks-ts";
+import {useEffect} from "react";
+import {useRouter} from "next/router";
 
 
 export default function Home() {
@@ -13,6 +16,14 @@ export default function Home() {
         `${apiURL}/user`,
         getFetcher
     );
+    const tokenValue = useReadLocalStorage('authToken');
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!tokenValue) {
+            router.push('/auth/login')
+        }
+    }, [])
 
     if (isLoading)
         return (
